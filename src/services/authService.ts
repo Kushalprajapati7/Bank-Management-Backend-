@@ -7,10 +7,8 @@ class AuthServices {
     public async createUser(newUser: IUser): Promise<IUser> {
 
         const hashPassword = await bcrypt.hash(newUser.password, 10);
-
         newUser.password = hashPassword;
         const user = new User(newUser);
-
         return await user.save();
 
     }
